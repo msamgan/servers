@@ -1,0 +1,12 @@
+#!/bin/sh
+
+NAME="servers"
+DESCRIPTION="Running server for the all the services."
+
+_invoke() {
+  for entry in "./services"/*; do
+    . "$entry"
+    echo Running : "\e[1;32m$NAME\e[0m"
+    cd $DIRECTORY && $COMMAND &
+  done
+}

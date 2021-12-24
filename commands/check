@@ -1,0 +1,9 @@
+#!/bin/sh
+
+NAME="check"
+DESCRIPTION="Check if the the servers are running or not."
+
+_invoke() {
+    netstat  -lnp | grep node
+    netstat  -lnp | grep php
+}

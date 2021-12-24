@@ -1,0 +1,12 @@
+#!/bin/sh
+
+NAME="list"
+DESCRIPTION="List all available commands."
+
+_invoke() {
+  for entry in "./commands"/*; do
+    . "$entry"
+
+    echo "\e[1;33m$NAME\e[0m : $DESCRIPTION"
+  done
+}

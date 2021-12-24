@@ -1,0 +1,11 @@
+#!/bin/sh
+
+NAME="kill"
+DESCRIPTION="Kill all servers node and php"
+
+_invoke() {
+  pkill -f node
+  pkill -f php
+  reset
+  echo "All servers killed..."
+}

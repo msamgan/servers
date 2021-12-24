@@ -1,0 +1,8 @@
+#!/bin/sh
+
+NAME='portal'
+DESCRIPTION='food online portal server'
+DIRECTORY='/home/msamgan/Projects/foodonline/fo-portal'
+COMMAND='php artisan serve --port=8000'
+
+  

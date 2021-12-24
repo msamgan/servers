@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "Executing Command:  $1"
+
+. ./commands/"$1" "$2"
+
+_invoke "$2"
