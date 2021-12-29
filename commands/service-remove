@@ -1,8 +1,0 @@
-#!/bin/sh
-
-NAME="service-remove"
-DESCRIPTION="Remove Service from the system, pass service name to remove"
-
-_invoke() {
-  unlink "./services/$1"
-}
