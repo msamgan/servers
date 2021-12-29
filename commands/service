@@ -9,19 +9,35 @@ _invoke() {
   "$1" "$2"
 }
 
-
 add() {
-  echo "Service name ?"
-  read name
-  echo "Service description ?"
+  while true; do
+    echo -n "Service name (required) : "
+    read name
+    if [ "$name" != "" ]; then
+      break
+    fi
+  done
+
+  echo -n "Service description : "
   read description
-  echo "Service directory ?"
-  read directory
-  echo "Service command ?"
-  read command
+
+  while true; do
+    echo -n "Service directory (required) : "
+    read directory
+    if [ "$directory" != "" ]; then
+      break
+    fi
+  done
+
+  while true; do
+    echo -n "Service command (required) : "
+    read command
+    if [ "$command" != "" ]; then
+      break
+    fi
+  done
 
   [ ! -d "./services/" ] && mkdir "./services"
-
 
   echo "#!/bin/sh
 
@@ -44,21 +60,10 @@ remove() {
   unlink "./services/$1"
 }
 
-capturePid () {
-      echo "#!/bin/sh
-
-PID=$!" >> "./process/$NAME"
-}
-
-
 start() {
   . "./services/$1"
 
   echo Running : "\e[1;32m$NAME\e[0m"
   echo "\e[1;32mExecuting $COMMAND in $DIRECTORY\e[0m"
   cd $DIRECTORY && $COMMAND &
-  capturePid &
 }
-
-
-
