@@ -20,6 +20,9 @@ add() {
   echo "Service command ?"
   read command
 
+  [ ! -d "./services/" ] && mkdir "./services"
+
+
   echo "#!/bin/sh
 
 NAME='$name'
