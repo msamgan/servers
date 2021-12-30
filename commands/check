@@ -4,6 +4,8 @@ NAME="check"
 DESCRIPTION="Check if the the servers are running or not."
 
 _invoke() {
-    netstat  -lnp | grep node
-    netstat  -lnp | grep php
+  for entry in "./services"/*; do
+    . "$entry"
+    lsof -i:$PORT -P -n | grep $PORT
+  done
 }
