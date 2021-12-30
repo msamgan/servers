@@ -37,6 +37,15 @@ add() {
     fi
   done
 
+
+  while true; do
+    echo -n "Service Port (required) : "
+    read port
+    if [ "$port" != "" ]; then
+      break
+    fi
+  done
+
   [ ! -d "./services/" ] && mkdir "./services"
 
   echo "#!/bin/sh
@@ -45,6 +54,7 @@ NAME='$name'
 DESCRIPTION='$description'
 DIRECTORY='$directory'
 COMMAND='$command'
+PORT='$port'
 
   " >>"./services/$name"
 }
@@ -52,7 +62,7 @@ COMMAND='$command'
 list() {
   for entry in "./services"/*; do
     . "$entry"
-    echo "\e[1;33m$NAME\e[0m : $DESCRIPTION (directory: \e[1;32m$DIRECTORY\e[0m, command: \e[1;32m$COMMAND\e[0m)"
+    echo "\e[1;33m$NAME\e[0m : $DESCRIPTION (directory: \e[1;32m$DIRECTORY\e[0m, command: \e[1;32m$COMMAND\e[0m, port: \e[1;32m$PORT\e[0m)"
   done
 }
 

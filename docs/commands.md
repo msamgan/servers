@@ -27,6 +27,11 @@ To kill all the running servers
 sh run kill
 ```
 
+To kill a particular service
+```shell
+sh run kill <service_name>
+```
+
 ## service
 service have all the commands related to service starting with
 

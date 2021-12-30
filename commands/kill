@@ -4,8 +4,28 @@ NAME="kill"
 DESCRIPTION="Kill all servers node and php"
 
 _invoke() {
-  pkill -f node
-  pkill -f php
+
+  if [ $1 != "" ]; then
+    . ./services/"$1"
+
+    portExist=$(lsof -t -i:"$PORT")
+    if [ $portExist != "" ]; then
+      kill -9 $(lsof -t -i:"$PORT") &
+      echo "$NAME server killed..."
+    fi
+    reset
+    exit 0
+  fi
+
+  for entry in "./services"/*; do
+    . "$entry"
+
+    portExist=$(lsof -t -i:"$PORT")
+    if [ $portExist != "" ]; then
+      kill -9 $(lsof -t -i:"$PORT") &
+    fi
+  done
+
   reset
   echo "All servers killed..."
 }
