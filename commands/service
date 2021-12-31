@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#!/bin/sh
-
 NAME="service"
 DESCRIPTION="commands for services."
 
@@ -36,7 +34,6 @@ add() {
       break
     fi
   done
-
 
   while true; do
     echo -n "Service Port (required) : "

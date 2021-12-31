@@ -1,6 +1,5 @@
 #!/bin/sh
 
-echo "You are running $0"
 echo "Executing Command:  $1"
 
 . ./commands/"$1" "$2"

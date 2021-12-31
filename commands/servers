@@ -8,6 +8,7 @@ _invoke() {
     . "$entry"
     echo Running : "\e[1;32m$NAME\e[0m"
     echo "\e[1;32mExecuting $COMMAND in $DIRECTORY\e[0m"
-    cd $DIRECTORY && $COMMAND &
+    cd "$DIRECTORY" && $COMMAND &
+    
   done
 }
